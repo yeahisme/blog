@@ -1,0 +1,373 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>无标题文档</title>
+</head>
+
+<body>
+<style>
+body{
+	margin:0;
+	padding:0;
+	text-align:center;
+}
+#wrapper{
+	zoom:1;
+	padding-top:10px;
+}
+#wrapper:after{
+	display:block;
+	content:"";
+	clear:both;
+}
+.item {
+	float:left;
+	width:50%;
+	margin-bottom:10px;
+}
+.item-con{
+	border:1px solid #ccc;
+	box-sizing:border-box;
+}
+.item:nth-child(2n+1) .item-con{
+	margin:0 5px 0 10px;
+}
+.item:nth-child(2n) .item-con{
+	margin:0 10px 0 5px;
+	
+}
+.item-con-img{
+	display:block;
+	max-width:100%;
+	height:auto;
+	transition:opacity 0.25s ease-in-out;
+	opacity: .3;
+}
+.item-title{
+	height:32px;
+	line-height:32px;
+}
+</style>
+<div id="wrapper">
+	<div>
+    	<div class="item">
+			<div class="item-con">
+				<div>
+					<img class="item-con-img" data-src="images/1.png" src="images/1.png" width="200" height="200" style="opacity: 1;">
+				</div>
+				<div class="item-title">很好的产品1</div>
+			</div>
+		</div>
+	</div>
+    <div>
+    	<div class="item">
+			<div class="item-con">
+				<div>
+					<img class="item-con-img" data-src="images/2.png" src="images/4.png" width="200" height="200" style="opacity: 1;">
+				</div>
+				<div class="item-title">很好的产品1</div>
+			</div>
+		</div>
+	</div>
+    <div>
+    	<div class="item">
+			<div class="item-con">
+				<div>
+					<img class="item-con-img" data-src="images/3.png" src="images/1.png" width="200" height="200" style="opacity: 1;">
+				</div>
+				<div class="item-title">很好的产品1</div>
+			</div>
+		</div>
+	</div>
+    <div>
+    	<div class="item">
+			<div class="item-con">
+				<div>
+					<img class="item-con-img" data-src="images/4.png" src="images/2.png" width="200" height="200" style="opacity: 1;">
+				</div>
+				<div class="item-title">很好的产品1</div>
+			</div>
+		</div>
+	</div>
+    <div>
+    	<div class="item">
+			<div class="item-con">
+				<div>
+					<img class="item-con-img" data-src="images/1.png" src="images/3.png" width="200" height="200" style="opacity: 1;">
+				</div>
+				<div class="item-title">很好的产品1</div>
+			</div>
+		</div>
+	</div>
+    <div>
+    	<div class="item">
+			<div class="item-con">
+				<div>
+					<img class="item-con-img" data-src="images/2.png" src="images/4.png" width="200" height="200" style="opacity: 1;">
+				</div>
+				<div class="item-title">很好的产品1</div>
+			</div>
+		</div>
+	</div>
+    <div>
+    	<div class="item">
+			<div class="item-con">
+				<div>
+					<img class="item-con-img" data-src="images/3.png" src="images/1.png" width="200" height="200" style="opacity: 1;">
+				</div>
+				<div class="item-title">很好的产品1</div>
+			</div>
+		</div>
+	</div>
+    <div>
+    	<div class="item">
+			<div class="item-con">
+				<div>
+					<img class="item-con-img" data-src="images/4.png" src="images/2.png" width="200" height="200" style="opacity: 1;">
+				</div>
+				<div class="item-title">很好的产品1</div>
+			</div>
+		</div>
+	</div>
+    <div>
+    	<div class="item">
+			<div class="item-con">
+				<div>
+					<img class="item-con-img" data-src="images/1.png" src="images/3.png" width="200" height="200" style="opacity: 1;">
+				</div>
+				<div class="item-title">很好的产品1</div>
+			</div>
+		</div>
+	</div>
+    <div>
+    	<div class="item">
+			<div class="item-con">
+				<div>
+					<img class="item-con-img" data-src="images/2.png" src="images/4.png" width="200" height="200" style="opacity: 1;">
+				</div>
+				<div class="item-title">很好的产品1</div>
+			</div>
+		</div>
+	</div>
+    <div>
+    	<div class="item">
+			<div class="item-con">
+				<div>
+					<img class="item-con-img" data-src="images/3.png" src="images/1.png" width="200" height="200" style="opacity: 1;">
+				</div>
+				<div class="item-title">很好的产品1</div>
+			</div>
+		</div>
+	</div>
+    <div>
+    	<div class="item">
+			<div class="item-con">
+				<div>
+					<img class="item-con-img" data-src="images/4.png" src="images/1.png" width="200" height="200" style="opacity: 1;">
+				</div>
+				<div class="item-title">很好的产品1</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="js/jquery-3.1.0.min.js"></script>
+<script src="js/handlebars-v4.0.5.js"></script>
+<script id="slide" type="text/x-handlebars">
+	{{#list product}}
+		<div class="item" data-id="{{id}}">
+			<div class="item-con">
+				<div>
+					<img class="item-con-img" data-src="{{imgsrc}}" src="images/downloading.png" width="200" height="200">
+				</div>
+				<div class="item-title">{{title}}</div>
+			</div>
+		</div>	
+	{{/list}}
+</script>
+<script>
+	/* 节流 */
+	var throttle = function ( fn, interval ) {
+		var __self = fn,    // 保存需要被延迟执行的函数引用
+			timer,      // 定时器
+			firstTime = true;    // 是否是第一次调用
+		return function () {
+			var args = arguments,
+				__me = this;
+			if ( firstTime ) {    // 如果是第一次调用，不需延迟执行
+				__self.apply(__me, args);
+				return firstTime = false;
+			}
+			if ( timer ) {    // 如果定时器还在，说明前一次延迟执行还没有完成
+				return false;
+			}
+			timer = setTimeout(function () {  // 延迟一段时间执行
+				clearTimeout(timer);
+				timer = null;
+				__self.apply(__me, args);
+			}, interval || 500 );
+		};
+	};
+
+	/* 兼容滚动事件 */
+	//$(window).scroll(throttle(handleScroll, 500 ))
+	window.onscroll = throttle(handleScroll, 500 );
+
+	/* 图片的src编号 */
+	var j = 0;
+	
+	/* 用于对图片进行编号 */
+	var i = 0;
+	
+	/* 数据加载标志符 */
+	var fetching = false;
+	
+	/* 用于判断滚动的方向 */
+	var scrollnum = 0;
+	
+	/* 缓存幻灯片的数据 */
+	var slideCache={};
+	
+	/* 记录已下载的图片 */
+	var loaded = {};
+	
+	/* 使用缓存来快速检查元素的可见性 */
+	var slideMap = {};
+
+	/* 滚动处理函数 */
+	function handleScroll(e) {
+		if(scrollnum > window.scrollY) return;
+		if(window.scrollY + 1000 > document.body.offsetHeight){
+			fetchBirds();
+		}
+		handleDefer();
+	}
+	
+	/* 元素是否可见 */
+	function isVisible(key,node) {
+		if(slideMap[key]){
+			offTop = slideMap[key].offTop;
+			offsetHeight = slideMap[key].offsetHeight;
+		}else{
+			var offTop = node.offsetTop,
+			offsetHeight = node.offsetHeight;
+			var data = {
+				offTop:offTop,
+				offsetHeight:offsetHeight
+			}
+			slideMap[key]=data;
+		}
+		var scrollTop = window.scrollY,
+		innerHeight = window.innerHeight,
+		topViewPort = scrollTop,
+		bottomViewPort = scrollTop + innerHeight;
+		return offTop + offsetHeight > topViewPort && offTop < bottomViewPort;
+		
+	}
+	
+	/* 缓存幻灯片的数据 */
+	function updateSlideCache(node) {
+		var list = node.querySelectorAll('.item');
+		
+		var len = list.length;
+		var obj;
+		
+		for (var i=0; i < len; i++) {
+			obj = {
+				node:list[i],
+				img:list[i].querySelector('.item-con-img')
+			}
+			
+			obj.src = obj.img.getAttribute('data-src');
+			slideCache[list[i].getAttribute('data-id')]=obj;
+		};
+		
+	}
+	
+	/* 处理图片的加载 */
+	function handleDefer() {
+		var list = slideCache;
+		var thisImg;
+		for ( var p in list ){ 
+			thisImg = list[p].img
+			var deferSrc = list[p].src;
+
+			if(isVisible(p,list[p].node)) {
+				//create a closure for for simple preload stuff
+				var handler = (function() {
+					var node, src;
+					node = thisImg;
+					src = deferSrc;
+					var thisi = p;
+					
+					return function () {
+						node.src = src;
+						node.style.opacity = 1;
+						loaded[deferSrc] = true;
+						delete slideCache[thisi];
+						delete slideMap[thisi];
+					}
+				})();
+	
+				var img = new Image();
+				img.onload = handler;
+				img.src = list[p].src;
+			
+			}
+		}
+	}
+	
+	/* ajax进行数据请求 */
+	function fetchBirds(){
+		console.log(j)
+		if(j>=84) return ;
+		if(fetching){
+			return;
+		}else{
+			fetching = true;
+		}
+		var source   = $("#slide").html();
+
+		var context = {
+		  product: [
+			{imgsrc: "images/1 ("+(++j)+").png", title: "很好的产品"+(++i), id: "j"+(++i)},
+			{imgsrc: "images/1 ("+(++j)+").png", title: "很好的产品"+(++i), id: "j"+(++i)},
+			{imgsrc: "images/1 ("+(++j)+").png", title: "很好的产品"+(++i), id: "j"+(++i)},
+			{imgsrc: "images/1 ("+(++j)+").png", title: "很好的产品"+(++i), id: "j"+(++i)},
+			{imgsrc: "images/1 ("+(++j)+").png", title: "很好的产品"+(++i), id: "j"+(++i)},
+			{imgsrc: "images/1 ("+(++j)+").png", title: "很好的产品"+(++i), id: "j"+(++i)},
+			{imgsrc: "images/1 ("+(++j)+").png", title: "很好的产品"+(++i), id: "j"+(++i)},
+			{imgsrc: "images/1 ("+(++j)+").png", title: "很好的产品"+(++i), id: "j"+(++i)},
+			{imgsrc: "images/1 ("+(++j)+").png", title: "很好的产品"+(++i), id: "j"+(++i)},
+			{imgsrc: "images/1 ("+(++j)+").png", title: "很好的产品"+(++i), id: "j"+(++i)},
+			{imgsrc: "images/1 ("+(++j)+").png", title: "很好的产品"+(++i), id: "j"+(++i)},
+			{imgsrc: "images/1 ("+(++j)+").png", title: "很好的产品"+(++i), id: "j"+(++i)},
+			{imgsrc: "images/1 ("+(++j)+").png", title: "很好的产品"+(++i), id: "j"+(++i)},
+			{imgsrc: "images/1 ("+(++j)+").png", title: "很好的产品"+(++i), id: "j"+(++i)}
+		  ]
+		};
+		
+		frag = document.createElement('div');
+		
+			
+		Handlebars.registerHelper('list', function(items, options) {
+		  var out = "";
+		
+		  for(var i=0, l=items.length; i<l; i++) {
+			out = out + options.fn(items[i]);
+		  }
+		
+		  return out;
+		});
+		var template = Handlebars.compile(source);
+		var html  = template(context);
+		frag.innerHTML = html;
+
+		$("#wrapper").append(frag);
+		fetching = false;
+		updateSlideCache(frag);
+	}
+</script>
+</body>
+</html>
