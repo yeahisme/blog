@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>无标题文档</title>
+<title>无限滚动</title>
 </head>
 
 <body>
@@ -44,136 +44,28 @@ body{
 	height:auto;
 	transition:opacity 0.25s ease-in-out;
 	opacity: .3;
+	margin:0 auto;
 }
 .item-title{
 	height:32px;
 	line-height:32px;
 }
 </style>
-<div id="wrapper">
-	<div>
-    	<div class="item">
-			<div class="item-con">
-				<div>
-					<img class="item-con-img" data-src="images/1.png" src="images/1.png" width="200" height="200" style="opacity: 1;">
-				</div>
-				<div class="item-title">很好的产品1</div>
-			</div>
-		</div>
-	</div>
-    <div>
-    	<div class="item">
-			<div class="item-con">
-				<div>
-					<img class="item-con-img" data-src="images/2.png" src="images/4.png" width="200" height="200" style="opacity: 1;">
-				</div>
-				<div class="item-title">很好的产品1</div>
-			</div>
-		</div>
-	</div>
-    <div>
-    	<div class="item">
-			<div class="item-con">
-				<div>
-					<img class="item-con-img" data-src="images/3.png" src="images/1.png" width="200" height="200" style="opacity: 1;">
-				</div>
-				<div class="item-title">很好的产品1</div>
-			</div>
-		</div>
-	</div>
-    <div>
-    	<div class="item">
-			<div class="item-con">
-				<div>
-					<img class="item-con-img" data-src="images/4.png" src="images/2.png" width="200" height="200" style="opacity: 1;">
-				</div>
-				<div class="item-title">很好的产品1</div>
-			</div>
-		</div>
-	</div>
-    <div>
-    	<div class="item">
-			<div class="item-con">
-				<div>
-					<img class="item-con-img" data-src="images/1.png" src="images/3.png" width="200" height="200" style="opacity: 1;">
-				</div>
-				<div class="item-title">很好的产品1</div>
-			</div>
-		</div>
-	</div>
-    <div>
-    	<div class="item">
-			<div class="item-con">
-				<div>
-					<img class="item-con-img" data-src="images/2.png" src="images/4.png" width="200" height="200" style="opacity: 1;">
-				</div>
-				<div class="item-title">很好的产品1</div>
-			</div>
-		</div>
-	</div>
-    <div>
-    	<div class="item">
-			<div class="item-con">
-				<div>
-					<img class="item-con-img" data-src="images/3.png" src="images/1.png" width="200" height="200" style="opacity: 1;">
-				</div>
-				<div class="item-title">很好的产品1</div>
-			</div>
-		</div>
-	</div>
-    <div>
-    	<div class="item">
-			<div class="item-con">
-				<div>
-					<img class="item-con-img" data-src="images/4.png" src="images/2.png" width="200" height="200" style="opacity: 1;">
-				</div>
-				<div class="item-title">很好的产品1</div>
-			</div>
-		</div>
-	</div>
-    <div>
-    	<div class="item">
-			<div class="item-con">
-				<div>
-					<img class="item-con-img" data-src="images/1.png" src="images/3.png" width="200" height="200" style="opacity: 1;">
-				</div>
-				<div class="item-title">很好的产品1</div>
-			</div>
-		</div>
-	</div>
-    <div>
-    	<div class="item">
-			<div class="item-con">
-				<div>
-					<img class="item-con-img" data-src="images/2.png" src="images/4.png" width="200" height="200" style="opacity: 1;">
-				</div>
-				<div class="item-title">很好的产品1</div>
-			</div>
-		</div>
-	</div>
-    <div>
-    	<div class="item">
-			<div class="item-con">
-				<div>
-					<img class="item-con-img" data-src="images/3.png" src="images/1.png" width="200" height="200" style="opacity: 1;">
-				</div>
-				<div class="item-title">很好的产品1</div>
-			</div>
-		</div>
-	</div>
-    <div>
-    	<div class="item">
-			<div class="item-con">
-				<div>
-					<img class="item-con-img" data-src="images/4.png" src="images/1.png" width="200" height="200" style="opacity: 1;">
-				</div>
-				<div class="item-title">很好的产品1</div>
-			</div>
-		</div>
-	</div>
-</div>
+<div id="wrapper"></div>
 <script src="js/jquery-3.1.0.min.js"></script>
 <script src="js/handlebars-v4.0.5.js"></script>
+<script id="slideY" type="text/x-handlebars">
+	{{#list product}}
+		<div class="item" data-id="{{id}}">
+			<div class="item-con">
+				<div>
+					<img class="item-con-img" src="{{imgsrc}}" width="200" height="200" style="opacity:1">
+				</div>
+				<div class="item-title">{{title}}</div>
+			</div>
+		</div>	
+	{{/list}}
+</script>
 <script id="slide" type="text/x-handlebars">
 	{{#list product}}
 		<div class="item" data-id="{{id}}">
@@ -187,6 +79,46 @@ body{
 	{{/list}}
 </script>
 <script>
+	init()
+	/* 初始网页内容 */
+	function init(){
+		var source   = $("#slideY").html();
+
+		var context = {
+		  product: [
+			{imgsrc: "images/1.png", title: "很好的产品", id: "y1"},
+			{imgsrc: "images/2.png", title: "很好的产品", id: "y2"},
+			{imgsrc: "images/3.png", title: "很好的产品", id: "y3"},
+			{imgsrc: "images/4.png", title: "很好的产品", id: "y4"},
+			{imgsrc: "images/1.png", title: "很好的产品", id: "y5"},
+			{imgsrc: "images/2.png", title: "很好的产品", id: "y6"},
+			{imgsrc: "images/3.png", title: "很好的产品", id: "y7"},
+			{imgsrc: "images/4.png", title: "很好的产品", id: "y8"},
+			{imgsrc: "images/1.png", title: "很好的产品", id: "y9"},
+			{imgsrc: "images/2.png", title: "很好的产品", id: "y10"},
+			{imgsrc: "images/3.png", title: "很好的产品", id: "y11"},
+			{imgsrc: "images/4.png", title: "很好的产品", id: "y12"}
+		  ]
+		};
+		
+		var frag = document.createElement('div');
+		
+			
+		Handlebars.registerHelper('list', function(items, options) {
+		  var out = "";
+		
+		  for(var i=0, l=items.length; i<l; i++) {
+			out = out + options.fn(items[i]);
+		  }
+		
+		  return out;
+		});
+		var template = Handlebars.compile(source);
+		var html  = template(context);
+		frag.innerHTML = html;
+
+		$("#wrapper").append(frag);
+	}
 	/* 节流 */
 	var throttle = function ( fn, interval ) {
 		var __self = fn,    // 保存需要被延迟执行的函数引用
@@ -331,20 +263,22 @@ body{
 
 		var context = {
 		  product: [
-			{imgsrc: "images/1 ("+(++j)+").png", title: "很好的产品"+(++i), id: "j"+(++i)},
-			{imgsrc: "images/1 ("+(++j)+").png", title: "很好的产品"+(++i), id: "j"+(++i)},
-			{imgsrc: "images/1 ("+(++j)+").png", title: "很好的产品"+(++i), id: "j"+(++i)},
-			{imgsrc: "images/1 ("+(++j)+").png", title: "很好的产品"+(++i), id: "j"+(++i)},
-			{imgsrc: "images/1 ("+(++j)+").png", title: "很好的产品"+(++i), id: "j"+(++i)},
-			{imgsrc: "images/1 ("+(++j)+").png", title: "很好的产品"+(++i), id: "j"+(++i)},
-			{imgsrc: "images/1 ("+(++j)+").png", title: "很好的产品"+(++i), id: "j"+(++i)},
-			{imgsrc: "images/1 ("+(++j)+").png", title: "很好的产品"+(++i), id: "j"+(++i)},
-			{imgsrc: "images/1 ("+(++j)+").png", title: "很好的产品"+(++i), id: "j"+(++i)},
-			{imgsrc: "images/1 ("+(++j)+").png", title: "很好的产品"+(++i), id: "j"+(++i)},
-			{imgsrc: "images/1 ("+(++j)+").png", title: "很好的产品"+(++i), id: "j"+(++i)},
-			{imgsrc: "images/1 ("+(++j)+").png", title: "很好的产品"+(++i), id: "j"+(++i)},
-			{imgsrc: "images/1 ("+(++j)+").png", title: "很好的产品"+(++i), id: "j"+(++i)},
-			{imgsrc: "images/1 ("+(++j)+").png", title: "很好的产品"+(++i), id: "j"+(++i)}
+			{imgsrc: "images/1.png", title: "很好的产品"+(++i), id: "j"+(++i)},
+			{imgsrc: "images/2.png", title: "很好的产品"+(++i), id: "j"+(++i)},
+			{imgsrc: "images/3.png", title: "很好的产品"+(++i), id: "j"+(++i)},
+			{imgsrc: "images/4.png", title: "很好的产品"+(++i), id: "j"+(++i)},
+			{imgsrc: "images/1.png", title: "很好的产品"+(++i), id: "j"+(++i)},
+			{imgsrc: "images/2.png", title: "很好的产品"+(++i), id: "j"+(++i)},
+			{imgsrc: "images/3.png", title: "很好的产品"+(++i), id: "j"+(++i)},
+			{imgsrc: "images/4.png", title: "很好的产品"+(++i), id: "j"+(++i)},
+			{imgsrc: "images/1.png", title: "很好的产品"+(++i), id: "j"+(++i)},
+			{imgsrc: "images/2.png", title: "很好的产品"+(++i), id: "j"+(++i)},
+			{imgsrc: "images/3.png", title: "很好的产品"+(++i), id: "j"+(++i)},
+			{imgsrc: "images/4.png", title: "很好的产品"+(++i), id: "j"+(++i)},
+			{imgsrc: "images/1.png", title: "很好的产品"+(++i), id: "j"+(++i)},
+			{imgsrc: "images/2.png", title: "很好的产品"+(++i), id: "j"+(++i)},
+			{imgsrc: "images/3.png", title: "很好的产品"+(++i), id: "j"+(++i)},
+			{imgsrc: "images/4.png", title: "很好的产品"+(++i), id: "j"+(++i)}
 		  ]
 		};
 		
@@ -367,6 +301,7 @@ body{
 		$("#wrapper").append(frag);
 		fetching = false;
 		updateSlideCache(frag);
+		j+=16;
 	}
 </script>
 </body>
